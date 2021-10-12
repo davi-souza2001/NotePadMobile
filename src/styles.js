@@ -31,5 +31,20 @@ export default StyleSheet.create({
     margin: 20,
     marginRight: 30,
     color: "#b13b44"
+  },
+  buttonModal: {
+    position: "absolute",
+    right: 10,
+    top: 560,
+    width: 150,
+    height: 50,
+    backgroundColor: "#6D28D9",
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 6
+  },
+  contentGeral: {
+    height: "100%",
+    backgroundColor: "#1F2937"
   }
 })

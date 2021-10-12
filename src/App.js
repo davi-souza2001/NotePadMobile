@@ -23,7 +23,7 @@ export default function App() {
           },
           tabBarActiveTintColor: '#6D28D9'
         }}>
-        <Tab.Screen initialRouteName name="Tarefas" component={Tasks} options={{tabBarIcon: ({ size, color }) => (<Entypo name="home" size={size} color={color}/>)}} />
+        <Tab.Screen initialRouteName name="Suas Notas" component={Tasks} options={{tabBarIcon: ({ size, color }) => (<Entypo name="home" size={size} color={color}/>)}} />
         <Tab.Screen name="Configurações" component={ConfigPage} options={{tabBarIcon: ({ size, color }) => (<Entypo name="book" size={size} color={color}/>)}} />
       </Tab.Navigator>
     </NavigationContainer>
