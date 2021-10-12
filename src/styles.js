@@ -46,5 +46,22 @@ export default StyleSheet.create({
   contentGeral: {
     height: "100%",
     backgroundColor: "#1F2937"
+  },
+  task: {
+    height: 40,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#6D28D9"
+  },
+  contentTaskDelete: {
+    backgroundColor: "#ff4040",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "flex-end",
+    paddingHorizontal: 20
+  },
+  taskDelete: {
+    color: "#fff",
+    height: 40,
   }
 })
