@@ -3,6 +3,7 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Entypo, Feather } from "@expo/vector-icons";
+import 'react-native-gesture-handler';
 
 import Tasks from "./pages/tasks";
 import ConfigPage from './pages/configPage';
@@ -25,7 +26,6 @@ export default function App() {
         <Tab.Screen initialRouteName name="Tarefas" component={Tasks} options={{tabBarIcon: ({ size, color }) => (<Entypo name="home" size={size} color={color}/>)}} />
         <Tab.Screen name="Configurações" component={ConfigPage} options={{tabBarIcon: ({ size, color }) => (<Entypo name="book" size={size} color={color}/>)}} />
       </Tab.Navigator>
-      <StatusBar style="auto" />
     </NavigationContainer>
   );
 }
