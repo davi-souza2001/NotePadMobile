@@ -5,7 +5,7 @@ import { Entypo } from "@expo/vector-icons";
 
 import styles from "../styles";
 
-export default function Task() {
+export default function Task(props) {
 
     function deleteTask(){
         console.warn("deletada");
@@ -22,7 +22,7 @@ export default function Task() {
     return (
         <Swipeable renderRightActions={modalTask}>
             <View style={styles.task}>
-                <Text style={{color: "#fff"}}>Trocar cartoes da academia, spotify....</Text>
+                <Text style={{color: "#fff"}}>{props.content}</Text>
             </View>
         </Swipeable>
     )
