@@ -9,7 +9,7 @@ export default StyleSheet.create({
     backgroundColor: "#fff"
   },
   header: {
-    backgroundColor: "#b13b44",
+    backgroundColor: "#6D28D9",
     color: "#fff",
     textAlign: "center",
     padding: 15,
@@ -30,7 +30,7 @@ export default StyleSheet.create({
   button: {
     margin: 20,
     marginRight: 30,
-    color: "#b13b44"
+    color: "#6D28D9"
   },
   buttonModal: {
     position: "absolute",
@@ -45,23 +45,31 @@ export default StyleSheet.create({
   },
   contentGeral: {
     height: "100%",
+    width: "100%",
     backgroundColor: "#1F2937"
+  },
+  contentTasks: {
+    width: "100%",
+    alignItems: "center"
   },
   task: {
     height: 40,
+    width: 500,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#6D28D9"
+    backgroundColor: "#6D28D9",
+    borderRadius: 10
   },
   contentTaskDelete: {
+    height: 40,
     backgroundColor: "#ff4040",
-    flexDirection: "row",
     alignItems: "center",
-    justifyContent: "flex-end",
-    paddingHorizontal: 20
+    justifyContent: "center",
+    paddingHorizontal: 20,
+    borderRadius: 10
   },
   taskDelete: {
     color: "#fff",
-    height: 40,
+    height: 40
   }
 })

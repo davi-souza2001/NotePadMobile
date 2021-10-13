@@ -21,12 +21,15 @@ export default function tasks() {
         <SafeAreaView>
             <ModalTasks isVisible={showModalTask} onCancel={() => setShowModalTask(false)} />
             <View style={styles.contentGeral}>
-                <Task content="ola" />
-                <FlatList data={tasks} keyExtractor={item => `${item.id}`} renderItem={({item}) => <Task content={item.content}/>}/>
+                <View style={styles.contentTasks}>
+                    <FlatList data={tasks} keyExtractor={item => `${item.id}`} 
+                    renderItem={({item}) => <Task content={item.content}/>}/>
+                </View>
+                <TouchableOpacity style={styles.buttonModal} 
+                onPress={() => setShowModalTask(true)}>
+                    <Text style={{ color: "#fff" }}>Adicionar Nota</Text>
+                </TouchableOpacity>
             </View>
-            <TouchableOpacity style={styles.buttonModal} onPress={() => setShowModalTask(true)}>
-                <Text style={{ color: "#fff" }}>Adicionar Nota</Text>
-            </TouchableOpacity>
         </SafeAreaView>
     )
 }

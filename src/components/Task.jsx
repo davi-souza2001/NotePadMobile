@@ -14,7 +14,7 @@ export default function Task(props) {
     function modalTask(){
         return(
             <TouchableOpacity style={styles.contentTaskDelete} onPress={deleteTask}>
-                <Entypo name="trash" size={40} style={styles.taskDelete}/>
+                <Entypo name="trash" size={30} style={styles.taskDelete}/>
             </TouchableOpacity>
         )
     }
@@ -24,6 +24,7 @@ export default function Task(props) {
             <View style={styles.task}>
                 <Text style={{color: "#fff"}}>{props.content}</Text>
             </View>
+            <View style={{width: "100%", height: 3}}></View>
         </Swipeable>
     )
 }
