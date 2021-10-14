@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { SafeAreaView, Text, TouchableOpacity, View, FlatList } from 'react-native';
+import { SafeAreaView, 
+    Text, 
+    TouchableOpacity, 
+    View, 
+    FlatList,
+    ActivityIndicator
+ } from 'react-native';
 import firebase from "../firebase/config";
+import useAuth from "../data/hook/useAuth";
 
 import ModalTasks from '../components/ModalTasks';
 import Task from '../components/Task';
@@ -10,6 +17,7 @@ import styles from "../styles";
 export default function tasks() {
     const [showModalTask, setShowModalTask] = useState(false);
     const [todoList, setTodoList] = useState([]);
+    const { user } = useAuth();
 
     useEffect(() => {
         const todoRef = firebase.database().ref("Todo");
@@ -23,13 +31,22 @@ export default function tasks() {
         })
     }, []);
 
+    function renderNotes() {
+        return todoList?.map((todo, index) => {
+            if(todo.email == user?.email) {
+                return(
+                    <Task content={todo?.note} key={todo?.index}/>
+                )
+            }
+        })
+    }
+
     return (
         <SafeAreaView>
             <ModalTasks isVisible={showModalTask} onCancel={() => setShowModalTask(false)} />
             <View style={styles.contentGeral}>
                 <View style={styles.contentTasks}>
-                    <FlatList data={todoList} keyExtractor={item => `${item.note}`}
-                        renderItem={({ item }) => <Task content={item.note} />} />
+                    {renderNotes()}
                 </View>
                 <TouchableOpacity style={styles.buttonModal}
                     onPress={() => setShowModalTask(true)}>

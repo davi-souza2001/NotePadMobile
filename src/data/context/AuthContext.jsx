@@ -46,7 +46,6 @@ export function AuthProvider(props) {
         try {
             const resp = await firebase.auth().signInWithEmailAndPassword(email, password); 
             await configureSection(resp.user);
-            route.push('/createprofile');
         } finally {
             setLoading(false);
         }

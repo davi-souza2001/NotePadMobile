@@ -54,7 +54,7 @@ export default StyleSheet.create({
   },
   task: {
     height: 40,
-    width: 500,
+    width: 350,
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#6D28D9",

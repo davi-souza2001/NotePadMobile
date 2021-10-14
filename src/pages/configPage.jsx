@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { SafeAreaView, Text, TouchableOpacity, TextInput } from 'react-native';
+import { SafeAreaView, Text, TouchableOpacity, TextInput, Button } from 'react-native';
 import useAuth from "../data/hook/useAuth";
 
 export default function configPage({ navigation }) {
@@ -15,21 +15,15 @@ export default function configPage({ navigation }) {
         } catch(e) {
             console.warn(e);
         }
-    
     }
 
     async function loginWithCredencials() {
         try {
             await loginWithEmailAndPassword(email, password );
-           
         } catch(e) {
             console.warn(e);
         }
-    
     }
-
-    console.log(user)
-
     return (
         <SafeAreaView>
             <TouchableOpacity onPress={() => navigation.navigate("SuasNotas")}>
@@ -41,11 +35,10 @@ export default function configPage({ navigation }) {
             <TextInput placeholder="Informe sua senha" 
             value={password} onChangeText={value => setPassword(value)}/>
 
-            <Text onPress={createWithCredencials}>Criar</Text>
-            <Text onPress={loginWithCredencials}>Logar</Text>
+            <Button onPress={createWithCredencials} title="Criar"/>
+            <Button onPress={loginWithCredencials} title="Logar"/>
 
             <Text>{user?.email}</Text>
-                
         </SafeAreaView>
     )
 }

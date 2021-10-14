@@ -1,19 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { Modal, View, TouchableWithoutFeedback, Text, TouchableOpacity, TextInput } from 'react-native';
 import firebase from "../firebase/config";
+import useAuth from "../data/hook/useAuth";
 
 import styles from "../styles";
 
 export default function ModalTasks(props) {
     const [note, setNote] = useState("");
     const [date, setDate] = useState("");
+    const { user } = useAuth();
+    const email = user?.email;
 
     function sub() {
         const todoRef = firebase.database().ref("Todo");
         /* const email = user.email; */
         const list = {
             note,
-            date
+            date,
+            email
         }
         todoRef.push(list);
     }
