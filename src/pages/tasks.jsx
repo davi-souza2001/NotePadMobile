@@ -2,9 +2,7 @@ import React, { useEffect, useState } from "react";
 import { SafeAreaView, 
     Text, 
     TouchableOpacity, 
-    View, 
-    FlatList,
-    ActivityIndicator
+    View
  } from 'react-native';
 import firebase from "../firebase/config";
 import useAuth from "../data/hook/useAuth";
@@ -35,7 +33,7 @@ export default function tasks() {
         return todoList?.map((todo, index) => {
             if(todo.email == user?.email) {
                 return(
-                    <Task content={todo?.note} key={todo?.index}/>
+                    <Task content={todo?.note} deleteFun={() => firebase.database().ref("Todo").child(todo.id).remove()} key={todo?.index}/>
                 )
             }
         })
@@ -46,7 +44,7 @@ export default function tasks() {
             <ModalTasks isVisible={showModalTask} onCancel={() => setShowModalTask(false)} />
             <View style={styles.contentGeral}>
                 <View style={styles.contentTasks}>
-                    {renderNotes()}
+                    {user ? renderNotes() : <Text>Faça seu login</Text>}
                 </View>
                 <TouchableOpacity style={styles.buttonModal}
                     onPress={() => setShowModalTask(true)}>

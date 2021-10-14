@@ -7,13 +7,9 @@ import styles from "../styles";
 
 export default function Task(props) {
 
-    function deleteTask(){
-        console.warn("deletada");
-    }
-
     function modalTask(){
         return(
-            <TouchableOpacity style={styles.contentTaskDelete} onPress={deleteTask}>
+            <TouchableOpacity style={styles.contentTaskDelete} onPress={props.deleteFun}>
                 <Entypo name="trash" size={30} style={styles.taskDelete}/>
             </TouchableOpacity>
         )

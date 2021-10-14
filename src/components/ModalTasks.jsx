@@ -13,7 +13,6 @@ export default function ModalTasks(props) {
 
     function sub() {
         const todoRef = firebase.database().ref("Todo");
-        /* const email = user.email; */
         const list = {
             note,
             date,
