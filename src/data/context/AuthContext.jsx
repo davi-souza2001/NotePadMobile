@@ -33,19 +33,24 @@ export function AuthProvider(props) {
         }
     }
 
-    async function loginGoogle() {
+    async function createUserWithEmailAndPassword(email, password) {
         try {
-            setLoading(true);
-            const resp = await firebase.auth().signInWithPopup(
-                new firebase.auth.GoogleAuthProvider()
-            );
-
-            configureSection(resp.user);
+            const resp = await firebase.auth().createUserWithEmailAndPassword(email, password);
+            await configureSection(resp.user);
         } finally {
-            setLoading(true);
+            setLoading(false);
         }
-    }
+    };
 
+    async function loginWithEmailAndPassword(email, password) {
+        try {
+            const resp = await firebase.auth().signInWithEmailAndPassword(email, password); 
+            await configureSection(resp.user);
+            route.push('/createprofile');
+        } finally {
+            setLoading(false);
+        }
+    };
 
     async function logout() {
         try {
@@ -61,8 +66,9 @@ export function AuthProvider(props) {
         <AuthContext.Provider value={{
             user,
             loading,
-            loginGoogle,
-            logout
+            logout,
+            createUserWithEmailAndPassword,
+            loginWithEmailAndPassword
         }}>
 
             {props.children}

@@ -1,18 +1,40 @@
-import React from 'react';
-import { SafeAreaView, Text, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import { SafeAreaView, Text, TouchableOpacity, TextInput } from 'react-native';
 import useAuth from "../data/hook/useAuth";
 
 export default function configPage({ navigation }) {
 
-    const { loginGoogle } = useAuth();
+    const { createUserWithEmailAndPassword, loginWithEmailAndPassword, user } = useAuth();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    async function createWithCredencials() {
+        try {
+            await createUserWithEmailAndPassword(email, password );
+            navigation.navigate("SuasNotas");
+        } catch(e) {
+            console.warn(e);
+        }
+    
+    }
+
+    console.log(user)
 
     return (
         <SafeAreaView>
-            <Text>ConfigUser</Text>
-            <TouchableOpacity onPress={() => navigation.navigate("SuasNotas")}><Text>Clique</Text></TouchableOpacity>
-            <TouchableOpacity onPress={loginGoogle}>
-                <Text>Login com o goole</Text>
+            <TouchableOpacity onPress={() => navigation.navigate("SuasNotas")}>
+                <Text>Clique</Text>
             </TouchableOpacity>
+            <TextInput placeholder="Informe seu email" 
+            value={email} onChangeText={value => setEmail(value)}/>
+
+            <TextInput placeholder="Informe sua senha" 
+            value={password} onChangeText={value => setPassword(value)}/>
+
+            <Text onPress={createWithCredencials}>Criar</Text>
+
+            <Text>{user?.email}</Text>
+                
         </SafeAreaView>
     )
 }
