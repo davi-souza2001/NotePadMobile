@@ -1,44 +1,78 @@
 import React, { useState } from 'react';
-import { SafeAreaView, Text, TouchableOpacity, TextInput, Button } from 'react-native';
+import { SafeAreaView, Text, TouchableOpacity, TextInput, Button, View } from 'react-native';
 import useAuth from "../data/hook/useAuth";
 
-export default function configPage({ navigation }) {
+import styles from "../styles";
 
-    const { createUserWithEmailAndPassword, loginWithEmailAndPassword, user } = useAuth();
+export default function configPage({ navigation }) {
+    // Mandar para outra rota
+    /* navigation.navigate("SuasNotas") */
+
+    const { createUserWithEmailAndPassword,
+        loginWithEmailAndPassword,
+        user,
+        logout } = useAuth();
+
     const [email, setEmail] = useState("");
+
     const [password, setPassword] = useState("");
+
+ // Part of create user and Login  
 
     async function createWithCredencials() {
         try {
-            await createUserWithEmailAndPassword(email, password );
-            
-        } catch(e) {
+            await createUserWithEmailAndPassword(email, password);
+            navigation.navigate("SuasNotas")
+        } catch (e) {
             console.warn(e);
         }
     }
 
     async function loginWithCredencials() {
         try {
-            await loginWithEmailAndPassword(email, password );
-        } catch(e) {
+            await loginWithEmailAndPassword(email, password);
+        } catch (e) {
             console.warn(e);
         }
     }
+// Ends
     return (
         <SafeAreaView>
-            <TouchableOpacity onPress={() => navigation.navigate("SuasNotas")}>
-                <Text>Clique</Text>
-            </TouchableOpacity>
-            <TextInput placeholder="Informe seu email" 
-            value={email} onChangeText={value => setEmail(value)}/>
-
-            <TextInput placeholder="Informe sua senha" 
-            value={password} onChangeText={value => setPassword(value)}/>
-
-            <Button onPress={createWithCredencials} title="Criar"/>
-            <Button onPress={loginWithCredencials} title="Logar"/>
-
-            <Text>{user?.email}</Text>
+            <View style={styles.contentConfigPage}>
+                {user ? (
+                    <>
+                        <View style={styles.contentLoggedUser}>
+                            <Text style={{color: "#fff", fontSize: 20}}>Seja bem Vindo ao Notepad</Text>
+                            <Text style={{color: "#fff", fontSize: 15, marginTop: 25}}>Logado com {user?.email}</Text>
+                            <Button onPress={logout} title="Sair" color="#fff" />
+                        </View>
+                    </>
+                ) : (
+                    <>
+                    <View style={styles.contentTitleNotepad}>
+                        <Text style={{ color: "#fff", fontSize: 32 }}>Bem vindo ao Notepad</Text>
+                    </View>
+                    <View style={styles.contentFormsEmailAndPassword}>
+                        <TextInput placeholder="Informe seu email"
+                            value={email}
+                            onChangeText={value => setEmail(value)}
+                            style={styles.form}
+                        />
+                        <TextInput placeholder="Informe sua senha"
+                            value={password}
+                            onChangeText={value => setPassword(value)}
+                            style={styles.form}
+                        />
+                    </View>
+                    <View style={styles.ContentButtonsLoginAndCreate}>
+                        <Button onPress={loginWithCredencials} title="Logar" color="#fff"/>
+                        <Text style={{color: "#6D78D9", fontSize:20 , marginTop: 4, marginBottom: 4}}>Ou Crie sua conta</Text>
+                        <Button onPress={createWithCredencials} title="Criar" color="#fff"/>
+                        <Button onPress={logout} title="Sair" color="#fff" />
+                    </View>
+                </>
+                )}
+            </View>
         </SafeAreaView>
     )
 }

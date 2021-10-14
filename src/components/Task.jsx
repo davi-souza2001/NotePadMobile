@@ -18,7 +18,7 @@ export default function Task(props) {
     return (
         <Swipeable renderRightActions={modalTask}>
             <View style={styles.task}>
-                <Text style={{color: "#fff"}}>{props.content}</Text>
+                <Text style={{color: "#fff"}} key={props.keySelf}>{props.content}</Text>
             </View>
             <View style={{width: "100%", height: 3}}></View>
         </Swipeable>

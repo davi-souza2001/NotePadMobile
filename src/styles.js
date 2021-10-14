@@ -71,5 +71,38 @@ export default StyleSheet.create({
   taskDelete: {
     color: "#fff",
     height: 40
+  },
+  contentConfigPage: {
+    height: "100%",
+    width: "100%",
+    backgroundColor: "#1F2937"
+  },
+  contentTitleNotepad: {
+    alignItems: "center",
+    marginTop: 80
+  },
+  contentFormsEmailAndPassword: {
+    alignItems: "center",
+    height: 50
+  },
+  form: {
+    backgroundColor: "#fff",
+    color: "#000",
+    height: "80%",
+    width: "70%",
+    marginTop: 12,
+    marginBottom: 30,
+    borderRadius: 10
+  },
+  ContentButtonsLoginAndCreate: {
+    width: "100%",
+    height: "20%",
+    marginTop: "25%",
+    alignItems: "center"
+  },
+  contentLoggedUser: {
+    width: "100%",
+    alignItems: "center",
+    marginTop: 20
   }
 })

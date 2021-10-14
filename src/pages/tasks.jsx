@@ -33,7 +33,7 @@ export default function tasks() {
         return todoList?.map((todo, index) => {
             if(todo.email == user?.email) {
                 return(
-                    <Task content={todo?.note} deleteFun={() => firebase.database().ref("Todo").child(todo.id).remove()} key={todo?.index}/>
+                    <Task content={todo?.note} keySelf={todo?.index} deleteFun={() => firebase.database().ref("Todo").child(todo.id).remove()}/>
                 )
             }
         })
@@ -43,13 +43,22 @@ export default function tasks() {
         <SafeAreaView>
             <ModalTasks isVisible={showModalTask} onCancel={() => setShowModalTask(false)} />
             <View style={styles.contentGeral}>
-                <View style={styles.contentTasks}>
-                    {user ? renderNotes() : <Text>Faça seu login</Text>}
-                </View>
-                <TouchableOpacity style={styles.buttonModal}
-                    onPress={() => setShowModalTask(true)}>
-                    <Text style={{ color: "#fff" }}>Adicionar Nota</Text>
-                </TouchableOpacity>
+                {user ? (
+                <>
+                    <View style={styles.contentTasks}>
+                        {user ? renderNotes() : <Text>Faça seu login</Text>}
+                    </View>
+                    <TouchableOpacity style={styles.buttonModal}
+                        onPress={() => setShowModalTask(true)}>
+                        <Text style={{ color: "#fff" }}>Adicionar Nota</Text>
+                    </TouchableOpacity>
+                </>
+                ): (
+                    <View style={{ width: "100%", alignItems: "center" }}>
+                        <Text style={{ color: "#fff", marginTop: 150, fontSize: 25}}>Ainda não tem uma conta ?</Text>
+                        <Text style={{ color: "#fff", marginTop: 150, fontSize: 20}}>Você pode se cadastrar na aba de configurações !</Text>
+                    </View>
+                )}
             </View>
         </SafeAreaView>
     )
