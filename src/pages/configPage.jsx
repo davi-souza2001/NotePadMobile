@@ -11,7 +11,17 @@ export default function configPage({ navigation }) {
     async function createWithCredencials() {
         try {
             await createUserWithEmailAndPassword(email, password );
-            navigation.navigate("SuasNotas");
+            
+        } catch(e) {
+            console.warn(e);
+        }
+    
+    }
+
+    async function loginWithCredencials() {
+        try {
+            await loginWithEmailAndPassword(email, password );
+           
         } catch(e) {
             console.warn(e);
         }
@@ -32,6 +42,7 @@ export default function configPage({ navigation }) {
             value={password} onChangeText={value => setPassword(value)}/>
 
             <Text onPress={createWithCredencials}>Criar</Text>
+            <Text onPress={loginWithCredencials}>Logar</Text>
 
             <Text>{user?.email}</Text>
                 
