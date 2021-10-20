@@ -65,10 +65,12 @@ export default function configPage({ navigation }) {
                         />
                     </View>
                     <View style={styles.ContentButtonsLoginAndCreate}>
-                        <Button onPress={loginWithCredencials} title="Logar" color="#fff"/>
+                        <Button onPress={loginWithCredencials} title="Logar" color="#6D28D9"/>
                         <Text style={{color: "#6D78D9", fontSize:20 , marginTop: 4, marginBottom: 4}}>Ou Crie sua conta</Text>
-                        <Button onPress={createWithCredencials} title="Criar" color="#fff"/>
-                        <Button onPress={logout} title="Sair" color="#fff" />
+                        <View style={{flexDirection: "row", padding: 2}}>
+                            <Button onPress={createWithCredencials} title="Criar" color="#6D28D9"/>
+                            <Button onPress={logout} title="Sair" color="#6D28D9" />
+                        </View>
                     </View>
                 </>
                 )}

@@ -33,7 +33,7 @@ export default function tasks() {
         return todoList?.map((todo, index) => {
             if(todo.email == user?.email) {
                 return(
-                    <Task content={todo?.note} keySelf={todo?.index} deleteFun={() => firebase.database().ref("Todo").child(todo.id).remove()}/>
+                    <Task key={todo?.note} content={todo?.note} keySelf={todo?.index} deleteFun={() => firebase.database().ref("Todo").child(todo.id).remove()}/>
                 )
             }
         })
