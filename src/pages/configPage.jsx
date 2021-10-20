@@ -44,35 +44,35 @@ export default function configPage({ navigation }) {
                         <View style={styles.contentLoggedUser}>
                             <Text style={{color: "#fff", fontSize: 20}}>Seja bem Vindo ao Notepad</Text>
                             <Text style={{color: "#fff", fontSize: 15, marginTop: 25}}>Logado com {user?.email}</Text>
-                            <Button onPress={logout} title="Sair" color="#fff" />
+                            <Button onPress={logout} title="Sair" color="#6D28D9" />
                         </View>
                     </>
                 ) : (
                     <>
-                    <View style={styles.contentTitleNotepad}>
-                        <Text style={{ color: "#fff", fontSize: 32 }}>Bem vindo ao Notepad</Text>
-                    </View>
-                    <View style={styles.contentFormsEmailAndPassword}>
-                        <TextInput placeholder="Informe seu email"
-                            value={email}
-                            onChangeText={value => setEmail(value)}
-                            style={styles.form}
-                        />
-                        <TextInput placeholder="Informe sua senha"
-                            value={password}
-                            onChangeText={value => setPassword(value)}
-                            style={styles.form}
-                        />
-                    </View>
-                    <View style={styles.ContentButtonsLoginAndCreate}>
-                        <Button onPress={loginWithCredencials} title="Logar" color="#6D28D9"/>
-                        <Text style={{color: "#6D78D9", fontSize:20 , marginTop: 4, marginBottom: 4}}>Ou Crie sua conta</Text>
-                        <View style={{flexDirection: "row", padding: 2}}>
-                            <Button onPress={createWithCredencials} title="Criar" color="#6D28D9"/>
-                            <Button onPress={logout} title="Sair" color="#6D28D9" />
+                        <View style={styles.contentTitleNotepad}>
+                            <Text style={{ color: "#fff", fontSize: 32 }}>Bem vindo ao Notepad</Text>
                         </View>
-                    </View>
-                </>
+                        <View style={styles.contentFormsEmailAndPassword}>
+                            <TextInput placeholder="Informe seu email"
+                                value={email}
+                                onChangeText={value => setEmail(value)}
+                                style={styles.form}
+                            />
+                            <TextInput placeholder="Informe sua senha"
+                                value={password}
+                                onChangeText={value => setPassword(value)}
+                                style={styles.form}
+                            />
+                        </View>
+                        <View style={styles.ContentButtonsLoginAndCreate}>
+                            <Button onPress={loginWithCredencials} title="Logar" color="#6D28D9"/>
+                            <Text style={{color: "#6D78D9", fontSize:20 , marginTop: 4, marginBottom: 4}}>Ou Crie sua conta</Text>
+                            <View style={{flexDirection: "row", padding: 2}}>
+                                <Button onPress={createWithCredencials} title="Criar" color="#6D28D9"/>
+                                <Button onPress={logout} title="Sair" color="#6D28D9" />
+                            </View>
+                        </View>
+                    </>
                 )}
             </View>
         </SafeAreaView>
