@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "notepadmobile",
+    "name": "NotePad",
     "slug": "notepadmobile",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -17,12 +17,15 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.davi.notepad"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
+        "backgroundColor": "#FFFFFF",
+        "package": "com.davi.notepad",
+        "versionCode": 1
       }
     },
     "web": {
